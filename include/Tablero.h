@@ -3,55 +3,54 @@
 
 #include <iostream>
 #include <string>
-#include <ctime> 
 using namespace std;
 
 
 class GestorArchivos;
+class Jugador;
 class Tablero 
 {
     protected:
         string nombre;
-        string jugador;
         string resultado;
         int puntuacion;
-        bool activo;
-        time_t tiempoInicio;
         int tiempoJuego;
         int modoJuego;
+        GestorArchivos* gestorArchivos; // puntero a la clase GestorArchivos
+        Jugador* jugador; // puntero a la clase Jugador
+        
     
     public:
         Tablero();
-        Tablero (const string& nombre, const string& jugador, const string& resultado,
-            int puntuacion, bool activo, time_t tiempoInicio, int tiempoJuego, int modoJuego);
+        Tablero (const string& nombre, const string& resultado,
+            int puntuacion, int tiempoJuego, int modoJuego, GestorArchivos* gestorArchivos, Jugador* jugador);
         
 
         string getNombre() const;
-        string getJugador() const;
         string getResultado() const;
         int getPuntuacion() const;
-        bool getActivo() const;
-        time_t getTiempoInicio() const;
         int getTiempoJuego() const;
         int getModoJuego() const;
+        Jugador* getJugador() const;
+        GestorArchivos* getGestorArchivos() const;
 
-        virtual void iniciar()= 0; // Método virtual puro, se inicializa el tablero de acuerdo al modo de juego seleccionado
-        virtual void mostrarEstadistica() const; // Método virtual puro para mostrar estadísticas del jugador en el tablero de acuerdo al modo de juego seleccionado 
-
-        void guardarHistorial(); 
-        void finalizarPartida(); 
-        void establecerDificultad(); 
-        void destruirRecursos();
+        //Metodos virtuales puros
+        virtual void iniciar()= 0; 
+        virtual void mostrarEstadistica() const = 0; 
+        
+        //Metodos comunes
+        virtual void guardarHistorial(); 
+        virtual void finalizarPartida(); 
+        virtual void establecerDificultad(); 
+        virtual void destruirRecursos();
         
         void setNombre(const string& nombre);
-        void setJugador(const string& jugador);
         void setResultado(const string& resultado);
         void setPuntuacion(int puntuacion);
-        void setActivo(bool activo);
-        void setTiempoInicio(time_t tiempoInicio);
         void setTiempoJuego(int tiempoJuego);
         void setModoJuego(int modoJuego);
-
+        void setJugador(Jugador* jugador);
+        void setGestorArchivos(GestorArchivos* gestorArchivos);
 
 };
 
