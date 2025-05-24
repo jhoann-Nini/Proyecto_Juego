@@ -1,5 +1,4 @@
-///subir cambios
-#ifndef AHORCADO_H
-#define AHORCADO_H
-
-#include "Tablero.h"
+#ifndef Ahorcado_H
+#define Ahorcado_H
+#include <iostream>
+#include <string>
