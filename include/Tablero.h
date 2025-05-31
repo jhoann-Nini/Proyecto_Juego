@@ -51,6 +51,7 @@ class Tablero
         void setModoJuego(int modoJuego);
         void setJugador(Jugador* jugador);
         void setGestorArchivos(GestorArchivos* gestorArchivos);
+        
 
 };
 
